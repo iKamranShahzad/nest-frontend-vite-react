@@ -5,7 +5,7 @@ A React + TypeScript frontend built with Vite.
 ## Features
 
 - React 19 with functional components and hooks
-- TypeScript strict mode
+- TypeScript strict mode (Linitng Enabled)
 - React Router v7 for routing
 - Authentication context with login, register, and protected routes
 - Example pages for API endpoints: root, ask question, query, sum, answer, say name
