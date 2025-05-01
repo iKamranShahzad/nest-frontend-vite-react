@@ -8,6 +8,8 @@ import AnswerPage from "./pages/AnswerPage";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import SayNamePage from "./pages/SayNamePage";
+import VerificationPage from "./pages/VerificationPage";
+
 import { useAuth } from "./hooks/useAuth";
 
 export default function App() {
@@ -66,6 +68,8 @@ export default function App() {
         <Route path="/answer" element={<AnswerPage />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/verify" element={<VerificationPage />} />
+
         <Route path="/sayname" element={<SayNamePage />} />
       </Routes>
     </div>
