@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 
 export default function Login() {
@@ -80,6 +80,9 @@ export default function Login() {
           {loading ? "Loading..." : "Login"}
         </button>
       </form>
+      <span>
+        <Link to="/reset">Forgot your Password?</Link>
+      </span>
       {error && <div style={{ color: "red" }}>Error: {error}</div>}
       {data && <div>Result: {data.message}</div>}
     </div>

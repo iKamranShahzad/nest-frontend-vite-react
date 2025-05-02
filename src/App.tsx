@@ -11,6 +11,8 @@ import SayNamePage from "./pages/SayNamePage";
 import VerificationPage from "./pages/VerificationPage";
 
 import { useAuth } from "./hooks/useAuth";
+import ResetPasswordPage from "./pages/ResetPasswordPage";
+import ForgetPasswordPage from "./pages/ForgetPasswordPage";
 
 export default function App() {
   const { isLoggedIn, logout } = useAuth();
@@ -32,7 +34,7 @@ export default function App() {
       <nav style={{ marginBottom: 24 }}>
         <Link to="/">Root</Link> | <Link to="/askquestion">Ask Question</Link> |{" "}
         <Link to="/query">Query</Link> | <Link to="/sum">Sum</Link> |{" "}
-        <Link to="/answer">Answer</Link> |{" "}
+        <Link to="/answer">Answer</Link>
         {!isLoggedIn && (
           <>
             {" | "}
@@ -42,6 +44,7 @@ export default function App() {
         )}
         {isLoggedIn && (
           <>
+            {" | "}
             <Link to="/sayname">SayName</Link>
             {" | "}
             <button
@@ -69,8 +72,9 @@ export default function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/verify" element={<VerificationPage />} />
-
         <Route path="/sayname" element={<SayNamePage />} />
+        <Route path="/reset" element={<ForgetPasswordPage />} />
+        <Route path="/reset-password" element={<ResetPasswordPage />} />
       </Routes>
     </div>
   );
