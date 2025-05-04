@@ -7,7 +7,7 @@ export default function Login() {
     message: string;
   }
   const [loading, setLoading] = useState<boolean>(false);
-  const [data, setData] = useState<ResponseData>(null);
+  const [data, setData] = useState<ResponseData>();
   const [error, setError] = useState<string | null>(null);
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -20,6 +20,33 @@ export default function Login() {
       navigate("/");
     }
   }, [isLoggedIn, navigate]);
+
+  const resendVerificationEmail = async () => {
+    setError(null);
+    setLoading(true);
+    try {
+      const res = await fetch(
+        "http://localhost:3000/auth/resend-verification",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email }),
+        }
+      );
+      const result = await res.json();
+      setData(result);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError(String(err));
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const fetchData = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -84,7 +111,17 @@ export default function Login() {
         <Link to="/reset">Forgot your Password?</Link>
       </span>
       {error && <div style={{ color: "red" }}>Error: {error}</div>}
-      {data && <div>Result: {data.message}</div>}
+      {data?.message == "Account not verified" ? (
+        <div>
+          <p style={{ color: "red" }}>Account not verified</p>
+          <p>Check your email for the verification link.</p>
+          <button onClick={resendVerificationEmail} disabled={loading}>
+            {loading ? "Loading..." : "Resend Verification Email"}
+          </button>
+        </div>
+      ) : (
+        <>{data && <div>Result: {data.message}</div>}</>
+      )}
     </div>
   );
 }
