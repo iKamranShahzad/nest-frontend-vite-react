@@ -16,45 +16,45 @@ import ForgetPasswordPage from "./pages/ForgetPasswordPage";
 
 export default function App() {
   const { isLoggedIn, logout } = useAuth();
-  console.log("App render - isLoggedIn:", isLoggedIn);
+  console.log('App render - isLoggedIn:', isLoggedIn);
 
   const navigate = useNavigate();
 
   const handleLogout = async () => {
-    console.log("Logout clicked");
+    console.log('Logout clicked');
     await logout();
-    console.log("Logout complete, navigating");
-    navigate("/");
+    console.log('Logout complete, navigating');
+    navigate('/');
   };
 
   return (
     <div
-      style={{ maxWidth: 600, margin: "2rem auto", fontFamily: "sans-serif" }}
+      style={{ maxWidth: 600, margin: '2rem auto', fontFamily: 'sans-serif' }}
     >
       <nav style={{ marginBottom: 24 }}>
-        <Link to="/">Root</Link> | <Link to="/askquestion">Ask Question</Link> |{" "}
-        <Link to="/query">Query</Link> | <Link to="/sum">Sum</Link> |{" "}
+        <Link to="/">Root</Link> | <Link to="/askquestion">Ask Question</Link> |{' '}
+        <Link to="/query">Query</Link> | <Link to="/sum">Sum</Link> |{' '}
         <Link to="/answer">Answer</Link>
         {!isLoggedIn && (
           <>
-            {" | "}
-            <Link to="/register">Register</Link> |{" "}
+            {' | '}
+            <Link to="/register">Register</Link> |{' '}
             <Link to="/login">Login</Link>
           </>
         )}
         {isLoggedIn && (
           <>
-            {" | "}
+            {' | '}
             <Link to="/sayname">SayName</Link>
-            {" | "}
+            {' | '}
             <button
               onClick={handleLogout}
               style={{
-                background: "none",
-                border: "none",
-                color: "blue",
-                cursor: "pointer",
-                textDecoration: "underline",
+                background: 'none',
+                border: 'none',
+                color: 'blue',
+                cursor: 'pointer',
+                textDecoration: 'underline',
                 padding: 0,
               }}
             >

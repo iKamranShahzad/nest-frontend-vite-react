@@ -7,7 +7,7 @@ export default function AskQuestionPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch("http://localhost:3000/askquestion");
+        const res = await fetch('http://localhost:3000/askquestion');
         const result = await res.text();
         setData(result);
       } catch (err: unknown) {
@@ -24,7 +24,7 @@ export default function AskQuestionPage() {
   return (
     <div>
       <h2>Ask Question Endpoint</h2>
-      {error && <div style={{ color: "red" }}>Error: {error}</div>}
+      {error && <div style={{ color: 'red' }}>Error: {error}</div>}
       {data ? <div>{data}</div> : <div>Loading...</div>}
     </div>
   );
